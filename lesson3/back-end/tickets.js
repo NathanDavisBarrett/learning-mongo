@@ -42,7 +42,7 @@ app.get('/api/tickets', async (req, res) => {
 app.post('/api/tickets', async (req,res) => {
   const ticket = new Ticket({
     name: req.body.name,
-    problem: req.bosy.problem
+    problem: req.body.problem
   });
   try {
     await ticket.save();

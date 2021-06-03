@@ -27,3 +27,5 @@ ticketSchema.set('toJSON', {
 });
 
 const Ticket = mongoose.model('Ticket', ticketSchema);
+
+app.listen(3000, () => console.log('Server listening on port 3000!'));

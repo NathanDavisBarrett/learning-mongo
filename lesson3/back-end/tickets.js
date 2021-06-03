@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({
 
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://mongodb.nathandavisbarrett.com:27017/test', {
+mongoose.connect('mongodb://localhost:27017/test', {
   useUnifiedTopology: true,
   useNewUrlParser: true,
 });

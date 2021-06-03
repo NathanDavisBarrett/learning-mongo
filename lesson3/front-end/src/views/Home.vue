@@ -21,6 +21,7 @@ export default {
   data() {
     return {
       tickets: [],
+      serverName: "mongo.nathandavisbarrett.com",
     }
   },
   created() {
@@ -29,7 +30,7 @@ export default {
   methods: {
     async getTickets() {
       try {
-        let response = await axios.get("/api/tickets");
+        let response = await axios.get(this.serverName + "/api/tickets");
         this.tickets = response.data.tickets;
         return true;
       } catch (error) {
@@ -38,7 +39,7 @@ export default {
     },
     async deleteTicket(ticket) {
       try {
-        await axios.delete("/api/tickets/" + ticket.id);
+        await axios.delete(this.serverName + "/api/tickets/" + ticket.id);
         this.getTickets();
         return true;
       } catch (error) {

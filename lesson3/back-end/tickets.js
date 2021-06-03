@@ -28,4 +28,15 @@ ticketSchema.set('toJSON', {
 
 const Ticket = mongoose.model('Ticket', ticketSchema);
 
+app.get('/api/tickets', async (req, res) => {
+  try {
+    let tickets = await Ticket.find();
+    res.send({tickets});
+  }
+  catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+})
+
 app.listen(3000, () => console.log('Server listening on port 3000!'));

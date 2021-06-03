@@ -24,6 +24,7 @@ export default {
       creating: true,
       name: '',
       problem: '',
+      serverName: "mongo.nathandavisbarrett.com",
     }
   },
   methods: {
@@ -32,7 +33,7 @@ export default {
     },
     async addTicket() {
       try {
-        await axios.post("/api/tickets", {
+        await axios.post(this.serverName + "/api/tickets", {
           name: this.name,
           problem: this.problem
         });

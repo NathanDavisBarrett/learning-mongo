@@ -37,6 +37,34 @@ app.get('/api/tickets', async (req, res) => {
     console.log(error);
     res.sendStatus(500);
   }
-})
+});
+
+app.post('/api/tickets', async (req,res) => {
+  const ticket = new Ticket({
+    name: req.body.name,
+    problem: req.bosy.problem
+  });
+  try {
+    await ticket.save();
+    res.send({ticket:ticket});
+  }
+  catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
+
+app.delete('/api/tickets/:id', async (req,res) => {
+  try {
+    await Ticket.deleteOne({
+      id: req.params.id
+    });
+    res.sendStatus(200);
+  }
+  catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
 
 app.listen(3000, () => console.log('Server listening on port 3000!'));
